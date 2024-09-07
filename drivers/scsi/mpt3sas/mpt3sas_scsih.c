@@ -4955,6 +4955,8 @@ _scsih_temp_threshold_events(struct MPT3SAS_ADAPTER *ioc,
 {
 	u32 doorbell;
 	if (ioc->temp_sensors_count >= event_data->SensorNum) {
+		// Comment out or remove these lines to prevent warnings
+		/*
 		ioc_err(ioc, "Temperature Threshold flags %s%s%s%s exceeded for Sensor: %d !!!\n",
 			le16_to_cpu(event_data->Status) & 0x1 ? "0 " : " ",
 			le16_to_cpu(event_data->Status) & 0x2 ? "1 " : " ",
@@ -4963,6 +4965,7 @@ _scsih_temp_threshold_events(struct MPT3SAS_ADAPTER *ioc,
 			event_data->SensorNum);
 		ioc_err(ioc, "Current Temp In Celsius: %d\n",
 			event_data->CurrentTemperature);
+		*/
 		if (ioc->hba_mpi_version_belonged != MPI2_VERSION) {
 			doorbell = mpt3sas_base_get_iocstate(ioc, 0);
 			if ((doorbell & MPI2_IOC_STATE_MASK) ==
